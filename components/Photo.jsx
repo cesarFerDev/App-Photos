@@ -1,4 +1,5 @@
-
+import like from '../assets/like.png';
+import remove from '../assets/remove.png';
 
 
 export const Photo = (props) => {
@@ -6,8 +7,7 @@ export const Photo = (props) => {
     return (
         <div className="photo"> 
             <img src={props.src}/>
-            {props.type === "Collection" ? <button>Coraçao</button> : <button>Remove</button>}
-            <button>Descargar</button>
+            {props.section === "Collection" ? <button className="photoLikeBtn"><img src={like} alt="like"/></button> : <button className="photoRemoveBtn"><img src={remove} alt="like"/></button>}
         </div>
     );
 };

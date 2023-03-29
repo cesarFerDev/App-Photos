@@ -5,7 +5,8 @@ import { store } from './app/store';
 import { BrowserRouter , Routes, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
-import {Page} from './pages/Page';
+import {Collection} from './pages/Collection';
+import {MyPhotos} from './pages/MyPhotos';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -17,10 +18,8 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Page name="Collection"/>}/> 
-          <Route path='/my-photos' element={<Page name="My Photos"/>}/>
-          <Route path='/profile' element={<Page name="Profile"/>}/>
-          <Route path='/contact' element={<Page name="Contact"/>}/>
+          <Route path='/' element={<Collection/>}/> 
+          <Route path='/my-photos' element={<MyPhotos/>}/>
         </Routes>
       </BrowserRouter>
     </Provider>
