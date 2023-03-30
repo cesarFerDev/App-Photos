@@ -1,3 +1,4 @@
+import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { Paginator } from "../components/Paginator";
 import { Photo } from "../components/Photo";
@@ -29,9 +30,7 @@ export const MyPhotos = (props) => {
             </div>
         </div>
         <Paginator/>
-        <footer className="footer">
-            <h4>@Jekk0 2023</h4>
-        </footer>
+        <Footer/>
         </>
     );
 };
