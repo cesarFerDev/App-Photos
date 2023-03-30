@@ -19,7 +19,7 @@ export const Collection = (props) => {
         if (photosState.status === "idle") {
           dispatch(loadPhotos());
         }
-      }, [photosState.status]);
+      }, [photosState.status], dispatch);
 
       let content;
       if (photosState.status === "loading") {
@@ -31,7 +31,7 @@ export const Collection = (props) => {
           photosState.data[0].forEach((photo) => { //EL array tiene un elemento [0] con todos los objetos de la llamada
             content.push(
               <>
-                <Photo section="Collection" src={photo.urls.regular} />
+                <Photo section="Collection" content={photo}/>
               </>
             );
           });

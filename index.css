@@ -198,6 +198,10 @@ li {
   width: 80px;
 }
 
+.photoLikeBtn:hover {
+  cursor: pointer;
+}
+
 .photoLikeBtn img {
   width: 100%;
   height: 50px;
