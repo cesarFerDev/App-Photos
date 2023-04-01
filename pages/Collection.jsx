@@ -12,28 +12,29 @@ import { useDispatch, useSelector } from "react-redux";
 export const Collection = (props) => {
 
     const photosState = useSelector(state => state.photos);
-
+    const filterPhotosString = useSelector(state => state.photos.filter);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (photosState.status === "idle") {
-          dispatch(loadPhotos());
-        }
-      }, [photosState.status], dispatch);
+          dispatch(loadPhotos(filterPhotosString));
+        };
+      }, [photosState.status, photosState.filter, dispatch]);
 
       let content;
       if (photosState.status === "loading") {
         content = "Loading";
       } else if (photosState.status === "fulfilled") {
-        
-        if (photosState.data !== undefined) {
+        const photosArray = photosState.data[0]; //data: [[photos]]
+        if (photosArray !== undefined) {
           content = [];
-          photosState.data[0].forEach((photo) => { //EL array tiene un elemento [0] con todos los objetos de la llamada
+          photosArray.forEach((photo) => {
             content.push(
               <>
-                <Photo section="Collection" content={photo}/>
+                <Photo photo={photo}/>
               </>
             );
+            
           });
         }
       } else {
