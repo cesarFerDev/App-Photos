@@ -25,16 +25,15 @@ export const Collection = (props) => {
       if (photosState.status === "loading") {
         content = "Loading";
       } else if (photosState.status === "fulfilled") {
-        const photosArray = photosState.data[0]; //data: [[photos]]
-        if (photosArray !== undefined) {
+        const photosArray = photosState.data;
+        if (photosArray) {
           content = [];
           photosArray.forEach((photo) => {
             content.push(
               <>
-                <Photo photo={photo}/>
+                <Photo photoInfo={photo}/>
               </>
             );
-            
           });
         }
       } else {

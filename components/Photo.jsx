@@ -1,35 +1,54 @@
 import { useDispatch } from 'react-redux';
-import likedBtn from '../assets/liked-btn.png';
-import notLikedBtn from '../assets/not-liked-btn.png';
+import like from '../assets/liked-btn.png'
+import notLike from '../assets/not-liked-btn.png'
+import info from '../assets/info.png'
+import { Modal } from './Modal';
 import {addPhotoToLocalStorage, deletePhotoFromLocalStorage} from '../auxfunctions/localStorage'
 import { favToggle } from '../features/photos/PhotosSlice'
 
 export const Photo = (props) => {
 
     const dispatch = useDispatch();
+    let iconImg = notLike;
+    if (props.photoInfo.fav) {
+        iconImg = like;
+    }
 
-    let likeIcon = notLikedBtn;
     const likeButtonClickHandler = (event) => {
-        likeIcon = likedBtn;
+        
         console.log("Click-estado antes del dispatch")
-        console.log(props.photo.fav)
-        dispatch(favToggle(props.photo));
+        console.log(props.photoInfo.fav);
+        dispatch(favToggle(props.photoInfo));
         console.log("Click-estado despues del dispatch")
-        console.log(props.photo.fav)
+        console.log(props.photoInfo.fav);
 
-        if (props.photo.fav) {
-            addPhotoToLocalStorage(props.photo);
-            likeIcon = likedBtn;
+        if (props.photoInfo.fav) {
+            addPhotoToLocalStorage(props.photoInfo);
         } else {
-            deletePhotoFromLocalStorage(props.photo);
-            //likeIcon = notLikedBtn;
+            deletePhotoFromLocalStorage(props.photoInfo);
         }   
     }  
+
+    /*let visible = false;
+    let display = "none"
+    const infoButtonClickHandler = (event) => {
+        visible = !visible;
+        console.log(visible)
+        if (visible) {
+            display = "block"
+        } else {
+            display = "none"
+        }
+        console.log(display)
+    }*/
     
     return (
+        
         <div className="photo"> 
-            <img src={props.photo.urls.regular}/>
-            <button onClick={likeButtonClickHandler} className="photoLikeBtn"><img src={likeIcon} alt="like"/></button>
+            <img src={props.photoInfo.urlThumb} alt="foto"/>
+            <button onClick={likeButtonClickHandler} className="favIcon"><img src={iconImg} alt=":("/></button>
+            {/*<button onClick={infoButtonClickHandler} className="infoIcon"><img src={info} alt=":("/></button>*/}
         </div>
+        
     );
 };
