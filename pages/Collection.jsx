@@ -40,6 +40,10 @@ export const Collection = (props) => {
         content = "Error";
       }
 
+    const loadClickHandler = (event) => {
+      window.location.reload();
+    }
+
     return (
         <>
         <NavBar />
@@ -48,8 +52,9 @@ export const Collection = (props) => {
             <div className="photosContainer">
                 {content}
             </div>
+            <button onClick={loadClickHandler}>Load More Photos</button>
         </div>
-        <Paginator/>
+        
         <Footer/>
         </>
     );

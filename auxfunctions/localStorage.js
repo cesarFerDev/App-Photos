@@ -1,7 +1,6 @@
 
-
-
 export const addPhotoToLocalStorage = (photo) => {
+
   let photosArrayInLocalStorage = localStorage.getItem("favoritePhotos");
 
   if (photosArrayInLocalStorage === null) {
@@ -12,7 +11,6 @@ export const addPhotoToLocalStorage = (photo) => {
     localStorage.setItem("favoritePhotos", initialState);
 
   } else if (isContained(photo) === false) {
-    
     let localStorageDataToObj = JSON.parse(photosArrayInLocalStorage);
     localStorageDataToObj.data.push(photo);
     let photosArrayUpdatedToString = JSON.stringify(localStorageDataToObj);
@@ -49,6 +47,7 @@ export const isContained = (photoCandidate) => {
 };
 
 export const deletePhotoFromLocalStorage = (photoToDelete) => {
+
   let photosArrayInLocalStorage = localStorage.getItem("favoritePhotos");
 
   if (photosArrayInLocalStorage !== null) {
@@ -64,7 +63,12 @@ export const deletePhotoFromLocalStorage = (photoToDelete) => {
       localStorage.setItem("favoritePhotos", photosArrayUpdatedToString);
     }
   }
+};
 
-
-  
+export const updateLocalStorage = (updatedData) => {
+  const updatedArrayData = {
+    data: updatedData
+  };
+  const updatedArrayDataToString = JSON.stringify(updatedArrayData);
+  localStorage.setItem("favoritePhotos", updatedArrayDataToString);
 };

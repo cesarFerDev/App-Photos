@@ -1,18 +1,22 @@
 import lupa from "../assets/lupita.PNG";
 import { useDispatch } from 'react-redux';
 import { setFilterSearch, clearPhotos } from '../features/photos/PhotosSlice';
-
+import { clearFavPhotos, setFavFilterSearch } from '../features/favPhotos/FavPhotosSlice';
 
 export const SearchBar = (props) => {
 
     const dispatch = useDispatch();
-    //let searchString = "";
 
     const searchSubmitHandler = (event) => {
         event.preventDefault();
-        //searchString = event.target.search.value;
-        dispatch(clearPhotos());
-        dispatch(setFilterSearch(event.target.search.value));
+        const filterString = event.target.search.value;
+        if (props.fav) {
+            dispatch(clearFavPhotos());
+            dispatch(setFavFilterSearch(filterString));
+        } else {
+            dispatch(clearPhotos());
+            dispatch(setFilterSearch(filterString));
+        }
     }
 
     return (

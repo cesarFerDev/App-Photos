@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import {Collection} from './pages/Collection';
 import {MyPhotos} from './pages/MyPhotos';
+import {PhotoInfo} from './pages/PhotoInfo';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -20,6 +21,7 @@ root.render(
         <Routes>
           <Route path='/' element={<Collection/>}/> 
           <Route path='/my-photos' element={<MyPhotos/>}/>
+          <Route path='/photo-info' element={<PhotoInfo/>}/>
         </Routes>
       </BrowserRouter>
     </Provider>

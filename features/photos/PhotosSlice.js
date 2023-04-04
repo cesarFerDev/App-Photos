@@ -10,8 +10,9 @@ const getRequiredData = (data) => {
     height: photo.height,
     likes: photo.likes,
     urlFull: photo.urls.full,
+    urlRegular: photo.urls.regular,
     urlThumb: photo.urls.thumb,
-    date: photo.updated_at,
+    date: new Date().toDateString(),
     fav: false
     }
     requiredData.push(photoWithRequiredInfo);
@@ -37,7 +38,7 @@ export const loadPhotos = createAsyncThunk(
               console.log("Error en la petición");
             }
           } else {
-            link = `https://api.unsplash.com/photos/random?count=9&client_id=7lzCele8F7qdrt7xtsa4Ke8iHukZuVHX6ck40vGT-OE`;
+            link = `https://api.unsplash.com/photos/random?count=27&client_id=7lzCele8F7qdrt7xtsa4Ke8iHukZuVHX6ck40vGT-OE`;
             const response = await fetch(link);
             if (response.ok) {
             const data = await response.json();
@@ -59,7 +60,8 @@ export const PhotosSlice = createSlice({
   initialState: {
     data: [],
     status: "idle",
-    filter: ""},
+    filter: ""
+  },
   reducers: {
     setFilterSearch: (state, action) => {
       state.filter = action.payload;
@@ -68,6 +70,7 @@ export const PhotosSlice = createSlice({
       for (let i = 0; i < state.data.length; i++) {
         if (state.data[i].id === action.payload.id) {
           state.data[i].fav = !(state.data[i].fav);
+          console.log(state.data[i].fav);
           break;
         }
       }
