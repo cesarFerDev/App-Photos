@@ -23,7 +23,7 @@ export const PhotoInfo = (props) => {
         <>
         <div className="background-modal">
             <div className="modal-container">
-                <button onClick={returnClickHandler} className="return">Return</button>
+                <button onClick={returnClickHandler} className="return">Go Back</button>
                 <img src={photoInfo.urlThumb} alt="Foto" height={300} width={350}/>
                 <div className="info-row">
                     <label><h4>Width:</h4></label>

@@ -74,6 +74,7 @@ export const PhotosSlice = createSlice({
           break;
         }
       }
+      
     },
     clearPhotos: (state) => {
       state.data = [];

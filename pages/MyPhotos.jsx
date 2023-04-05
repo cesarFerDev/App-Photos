@@ -5,7 +5,7 @@ import { Paginator } from "../components/Paginator";
 import { Photo } from "../components/Photo";
 import { SearchBar } from "../components/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
-import { loadFavPhotos } from "../features/favPhotos/FavPhotosSlice";
+import { clearFavPhotos, loadFavPhotos, loadFilteredFavPhotos } from "../features/favPhotos/FavPhotosSlice";
 import { FormControl, InputLabel, MenuItem  } from "@mui/material";
 import Select from '@mui/material/Select';
 
@@ -30,8 +30,13 @@ export const MyPhotos = (props) => {
     let localStorageData = getFavPhotos();
 
     useEffect(() => {
-        dispatch(loadFavPhotos(localStorageData));
-    },[favPhotosState.favData, dispatch, localStorageData]);
+        if (favPhotosState.filter === "") {
+            dispatch(loadFavPhotos(localStorageData));
+        } else {
+            dispatch(loadFilteredFavPhotos(localStorageData));
+        }
+        
+    },[favPhotosState.favData, dispatch, localStorageData, favPhotosState.filter]);
 
     const changeSelectHandler = (event) => {
         if (event.target.value !== "Sort by") {
@@ -46,7 +51,6 @@ export const MyPhotos = (props) => {
     }
 
     let content = [];
-    console.log(favPhotosState.favData)
     favPhotosState.favData.forEach((photo) => {
         content.push(
             <>

@@ -378,9 +378,10 @@ li {
   background-color: var(--white);
   color: var(--dark);
   border: none;
-  right: 85%;
+  right: 87%;
   font-size: 30px;
   font-family: 'Bebas Neue';
+  text-decoration: underline;
 }
 
 .return:hover {

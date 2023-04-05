@@ -52,9 +52,8 @@ export const Collection = (props) => {
             <div className="photosContainer">
                 {content}
             </div>
-            <button onClick={loadClickHandler}>Load More Photos</button>
         </div>
-        
+        <button className="edit-button" onClick={loadClickHandler}>Load More Photos</button>
         <Footer/>
         </>
     );

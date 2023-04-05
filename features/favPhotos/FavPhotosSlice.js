@@ -15,16 +15,20 @@ export const FavPhotosSlice = createSlice({
       loadFavPhotos: (state, action) => {
         if (state.favData.length === 0) {
           action.payload.forEach(photo => {
-            if (state.filter === "") {
-              state.favData.push(photo);
-            } else if (photo.description.includes(state.filter)) {
-              state.favData.push(photo);
-            }
-            
+            state.favData.push(photo);
           });
         }
       },
       loadFilteredFavPhotos: (state, action) => {
+        if (state.favData.filter !== "") {
+          const filteredFavData = [];
+          action.payload.forEach(photo => {
+            if (photo.description !== null && photo.description.includes(state.filter)) {
+              filteredFavData.push(photo);
+            }
+          })
+          state.favData = filteredFavData;
+        }
         
       },
       changeDescription: (state, action) => {
@@ -37,9 +41,9 @@ export const FavPhotosSlice = createSlice({
         updateLocalStorage(state.favData);
       },
       clearFavPhotos: (state) => {
-        state.data = [];
+        state.favData = [];
       }
     }
 });
 
-export const {setFavFilterSearch, loadFavPhotos, clearFavPhotos, changeDescription} = FavPhotosSlice.actions;
+export const {setFavFilterSearch, loadFavPhotos, loadFilteredFavPhotos, clearFavPhotos, changeDescription} = FavPhotosSlice.actions;

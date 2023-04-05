@@ -14,6 +14,7 @@ export const Photo = (props) => {
 
     const dispatch = useDispatch();
     const nav = useNavigate();
+    //const photoState = useSelector(state => state.photos);
     
     
     const likeButtonClickHandler = (event) => {
