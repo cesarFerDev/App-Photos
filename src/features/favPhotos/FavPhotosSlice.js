@@ -1,27 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {updateLocalStorage} from '../../auxfunctions/localStorage'
 
 //Estuve haciendo pruebas con el enlace de descarga (en el navegador) pero no llegué a entender como acceder al link de descarga
 //Lo siento, no he llegado a cumplir los requisitos mínimos, he hecho lo que he podido :(
 
-// export const downloadPhoto = createAsyncThunk(
-//   "favPhotos/downloadPhoto",
-//   async(id) => {
-//       try {
-//         const page = 1;
-//         link = `https://api.unsplash.com/photos/photos/${id}/download?client_id=7lzCele8F7qdrt7xtsa4Ke8iHukZuVHX6ck40vGT-OE`;
-//         const response = await fetch(link);
-//         if (response.ok) {
-//           const data = await response.json();
-//           const requiredData = getRequiredData(data);
-//           return requiredData;
-//         } else {
-//             console.log("Error en la petición");
-//         }
-//       } catch (error) {
-//         console.log(error);
-//       }
-// });
+export const downloadPhoto = createAsyncThunk(
+  "favPhotos/downloadPhoto",
+  async(id) => {
+      try {
+        let link = `https://api.unsplash.com/photos/${id}/download?client_id=7lzCele8F7qdrt7xtsa4Ke8iHukZuVHX6ck40vGT-OE`;
+        const response = await fetch(link);
+        if (response.ok) {
+          const data = await response.json();
+          const url = data.url;
+          return url;
+        } else {
+            console.log("Error en la petición");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+});
 
 
 
@@ -69,7 +68,7 @@ export const FavPhotosSlice = createSlice({
       clearFavPhotos: (state) => {
         state.favData = [];
       }
-    }
+    },
 });
 
 export const { addPhoto, deletePhoto, setFavFilterSearch, loadFavPhotos, changeDescription, clearFavPhotos} = FavPhotosSlice.actions;
