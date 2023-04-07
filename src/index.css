@@ -222,7 +222,7 @@ li {
   background: none;
   position: absolute;
   top: 440px;
-  left: 85%;
+  left: 82%;
   height: 40px;
   width: 55px;
 }
@@ -448,9 +448,17 @@ li {
     width: 40%;
   }
   .photosContainer {
-    grid-template-columns: 1fr;
+    width: 90%;
+    grid-template-columns: 1fr 1fr;
   }
   
+}
+
+@media (max-width: 600px) {
+  .photosContainer {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 375px) {
