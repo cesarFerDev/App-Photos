@@ -2,11 +2,13 @@ import like from '../assets/liked-btn.png'
 import notLike from '../assets/not-liked-btn.png'
 import remove from '../assets/remove.png'
 import info from '../assets/info.png'
+import download from '../assets/download.png'
 import {addPhotoToLocalStorage, deletePhotoFromLocalStorage} from '../auxfunctions/localStorage'
 import { useDispatch } from 'react-redux';
 import { favToggle } from '../features/photos/PhotosSlice'
 import { useNavigate } from 'react-router-dom';
-import { addPhoto, deletePhoto, downloadPhoto } from '../features/favPhotos/FavPhotosSlice'
+import { addPhoto, deletePhoto } from '../features/favPhotos/FavPhotosSlice'
+import { saveAs } from "file-saver";
 
 
 export const Photo = (props) => {
@@ -38,8 +40,8 @@ export const Photo = (props) => {
         nav('/photo-info', {state: props.photoInfo});
     }
 
-    const downloadClickHandler = (event) => {
-        dispatch(downloadPhoto(props.photoInfo.id));
+    const downloadClickHandler = (event) => { //Tardé en descubrir que esto de la descarga se podía hacer así de sencillo
+        saveAs(props.photoInfo.urlFull, props.photoInfo.id);
     }
 
     let iconImg = notLike; //Todo esto es para seleccionar que icono renderizo
@@ -55,7 +57,7 @@ export const Photo = (props) => {
             <img src={props.photoInfo.urlRegular} alt="foto"/>
             <button onClick={likeButtonClickHandler} className="favIcon"><img src={iconImg} alt="Add/Remove Icon"/></button>
             {props.fav && <button onClick={infoButtonClickHandler} className="infoIcon"><img src={info} alt="Info Icon"/></button>} {/*Esta forma de renderizar de forma condicional me ha parecido muy guay y quería probarla, si vengo de my-photos muestro sino no*/}
-            {/*props.fav && <button onClick={downloadClickHandler} className="downloadIcon"><img src={notLike} alt="Download Icon"/></button>*/}
+            {props.fav && <button onClick={downloadClickHandler} className="downloadIcon"><img src={download} alt="Download Icon"/></button>}
         </div>
     );
 };
