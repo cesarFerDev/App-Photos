@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/App-Photos/static/css/main.f2846e71.css",
-    "main.js": "/App-Photos/static/js/main.a030d7b8.js",
-    "static/js/787.de7ae2da.chunk.js": "/App-Photos/static/js/787.de7ae2da.chunk.js",
-    "static/media/lupita.PNG": "/App-Photos/static/media/lupita.ecf9b4b6a7064d222afd.PNG",
-    "index.html": "/App-Photos/index.html",
-    "main.f2846e71.css.map": "/App-Photos/static/css/main.f2846e71.css.map",
-    "main.a030d7b8.js.map": "/App-Photos/static/js/main.a030d7b8.js.map",
-    "787.de7ae2da.chunk.js.map": "/App-Photos/static/js/787.de7ae2da.chunk.js.map"
+    "main.css": "/Photi&Co/static/css/main.a7353e47.css",
+    "main.js": "/Photi&Co/static/js/main.54e35629.js",
+    "static/js/787.de7ae2da.chunk.js": "/Photi&Co/static/js/787.de7ae2da.chunk.js",
+    "static/media/lupita.PNG": "/Photi&Co/static/media/lupita.ecf9b4b6a7064d222afd.PNG",
+    "index.html": "/Photi&Co/index.html",
+    "main.a7353e47.css.map": "/Photi&Co/static/css/main.a7353e47.css.map",
+    "main.54e35629.js.map": "/Photi&Co/static/js/main.54e35629.js.map",
+    "787.de7ae2da.chunk.js.map": "/Photi&Co/static/js/787.de7ae2da.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2846e71.css",
-    "static/js/main.a030d7b8.js"
+    "static/css/main.a7353e47.css",
+    "static/js/main.54e35629.js"
   ]
 }
