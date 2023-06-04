@@ -15,7 +15,7 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename='Photi&Co'>
+      <BrowserRouter basename='/App-Photos'>
         <Routes>
           <Route path='/' element={<Collection/>}/>
           <Route path='/my-photos' element={<MyPhotos/>}/>
