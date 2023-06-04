@@ -36,15 +36,15 @@ export const Photo = (props) => {
         }
     };
     
-    const infoButtonClickHandler = (event) => { //Al clicar el icono de info redirijo al "modal" y le paso la info que tiene que renderizar
+    const infoButtonClickHandler = (event) => {
         nav('/photo-info', {state: props.photoInfo});
     }
 
-    const downloadClickHandler = (event) => { //Tardé en descubrir que esto de la descarga se podía hacer así de sencillo
+    const downloadClickHandler = (event) => {
         saveAs(props.photoInfo.urlFull, props.photoInfo.id);
     }
 
-    let iconImg = notLike; //Todo esto es para seleccionar que icono renderizo
+    let iconImg = notLike;
     if (props.photoInfo.fav) {
         iconImg = like;
     }
@@ -56,7 +56,7 @@ export const Photo = (props) => {
         <div className="photo"> 
             <img src={props.photoInfo.urlRegular} alt="foto"/>
             <button onClick={likeButtonClickHandler} className="favIcon"><img src={iconImg} alt="Add/Remove Icon"/></button>
-            {props.fav && <button onClick={infoButtonClickHandler} className="infoIcon"><img src={info} alt="Info Icon"/></button>} {/*Esta forma de renderizar de forma condicional me ha parecido muy guay y quería probarla, si vengo de my-photos muestro sino no*/}
+            {props.fav && <button onClick={infoButtonClickHandler} className="infoIcon"><img src={info} alt="Info Icon"/></button>}
             {props.fav && <button onClick={downloadClickHandler} className="downloadIcon"><img src={download} alt="Download Icon"/></button>}
         </div>
     );

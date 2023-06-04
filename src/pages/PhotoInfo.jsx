@@ -3,7 +3,7 @@ import { changeDescription } from "../features/favPhotos/FavPhotosSlice";
 import { useDispatch } from "react-redux";
 
 export const PhotoInfo = (props) => {
-    const location = useLocation(); //Para recoger el estado del useNavigate (los datos que le envío al redirigir al modal)
+    const location = useLocation();
     const photoInfo = location.state;
     const dispatch = useDispatch();
     const nav = useNavigate();

@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {updateLocalStorage} from '../../auxfunctions/localStorage'
-import { saveAs } from "file-saver";
-
-//Estuve haciendo pruebas con el enlace de descarga (en el navegador) pero no llegué a entender como acceder al link de descarga
-//Lo siento, no he llegado a cumplir los requisitos mínimos, he hecho lo que he podido :(
 
 export const FavPhotosSlice = createSlice({
   
@@ -13,12 +9,12 @@ export const FavPhotosSlice = createSlice({
       filter: "",
     },
     reducers: {
-      setFavFilterSearch: (state, action) => { //Setear el filtro de descripciones
+      setFavFilterSearch: (state, action) => {
         if (action.payload !== null) {
           state.filter = action.payload;
         }
       },
-      loadFavPhotos: (state, action) => { //Cargar de una (para el localStorage como payload sobretodo)
+      loadFavPhotos: (state, action) => {
         if (state.favData.length === 0) {
           action.payload.forEach(photo => {
             state.favData.push(photo);
@@ -44,7 +40,7 @@ export const FavPhotosSlice = createSlice({
             break;
           }
         }
-        updateLocalStorage(state.favData); //Update del cambio de descripción a las fotos favoritas de forma local (sin hacer POST en la API)
+        updateLocalStorage(state.favData); 
       },
       clearFavPhotos: (state) => {
         state.favData = [];

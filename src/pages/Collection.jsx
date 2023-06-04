@@ -15,7 +15,7 @@ export const Collection = (props) => {
     const filterPhotosString = useSelector(state => state.photos.filter);
     const dispatch = useDispatch();
 
-    useEffect(() => { //Sólo llamar a la API si el status del estado es inactivo
+    useEffect(() => { 
         if (photosState.status === "idle") {
           dispatch(loadPhotos(filterPhotosString));
         };
@@ -24,12 +24,11 @@ export const Collection = (props) => {
       let content;
       if (photosState.status === "loading") {
         content = "Loading";
-      } else if (photosState.status === "fulfilled") { //Cuando tengamos los datos
+      } else if (photosState.status === "fulfilled") { 
         const photosArray = photosState.data;
         if (photosArray) {
           content = [];
-          photosArray.forEach((photo) => { //Guardamos en content los datos de la API pasados a jsx con componente foto
-                                           //y sus datos pasados como prop (esta Mickey herramienta nos servirá en el futuro)
+          photosArray.forEach((photo) => { 
             content.push(
               <>
                 <Photo photoInfo={photo}/> 
@@ -41,7 +40,7 @@ export const Collection = (props) => {
         content = "Error";
       }
 
-    const loadClickHandler = (event) => {  //Cutrada, para cargar más fotos random puedes entrar cadena vacía en search y clicar un botón
+    const loadClickHandler = (event) => {
       window.location.reload();
     }
 

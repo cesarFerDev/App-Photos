@@ -21,20 +21,6 @@ export const addPhotoToLocalStorage = (photo) => {
   }
 };
 
-/*export const readLocalStorage = () => {
-  let photosArrayInLocalStorage = localStorage.getItem("favoritePhotos");
-  if (photosArrayInLocalStorage != null) {
-    let photosArrayToObject = JSON.parse(photosArrayInLocalStorage);
-    return photosArrayToObject.data;
-  } else {
-    let initialState = JSON.stringify({
-      data: []
-    });
-    localStorage.setItem("favoritePhotos", initialState);
-    return [];
-  };
-};*/
-
 export const isContained = (photoCandidate) => {
     let photosArrayInLocalStorage = localStorage.getItem("favoritePhotos");
     let contained = false;

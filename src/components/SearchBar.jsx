@@ -10,7 +10,7 @@ export const SearchBar = (props) => {
     const searchSubmitHandler = (event) => {
         event.preventDefault();
         const filterString = event.target.search.value;
-        if (props.fav) { //Elijo que acciones realizar dependiendo de la sección
+        if (props.fav) {
             dispatch(clearFavPhotos());
             dispatch(setFavFilterSearch(filterString));
         } else {

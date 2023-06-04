@@ -59,14 +59,14 @@ export const PhotosSlice = createSlice({
   name: "photos",
   initialState: {
     data: [],
-    status: "idle", //estado inicial, inactivo, para tener una condición de llamado y renderizado de la API
+    status: "idle", 
     filter: ""
   },
   reducers: {
-    setFilterSearch: (state, action) => { //Setear el filtro para buscar en la API
+    setFilterSearch: (state, action) => { 
       state.filter = action.payload;
     },
-    favToggle: (state, action) => { //Para cambiar el estado de favorita en cada click de me gusta
+    favToggle: (state, action) => { 
       for (let i = 0; i < state.data.length; i++) {
         if (state.data[i].id === action.payload.id) {
           state.data[i].fav = !(state.data[i].fav);

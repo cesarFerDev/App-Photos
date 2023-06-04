@@ -108,7 +108,7 @@ li {
   margin-bottom: 50px;
   background-color: var(--white);
   min-height: 100vh;
-  width: 80%;
+  width: 90%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
@@ -164,6 +164,7 @@ li {
 .photo img {
   width: 100%;
   height: 500px;
+  object-fit: cover;
 }
 
 .paginator {
